@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/xwalls/my-wave-portal/issues"
   },
-  "homepage": "https://github.com/xwalls/my-wave-portal#readme"
+  "homepage": "https://github.com/xwalls/my-wave-portal#readme",
+  "devDependencies": {
+    "hardhat": "^2.6.4"
+  }
 }
