@@ -19,4 +19,4 @@ jobs:
     - name: Install dependencies
       run: make install
     - name: Deploy smart contract
-      run: docker run islasgeci/testmake make run
+      run: make run
