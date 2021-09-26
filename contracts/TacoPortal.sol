@@ -10,6 +10,12 @@ contract TacoPortal {
 
     event NewTaco(address indexed from, uint256 timestamp, string message);
 
+    struct Taco {
+        address adress_benefactor;
+        string message;
+        uint256 timestamp;
+    }
+
     constructor() {
         taco_emoji = unicode"🌮";
         console.log("Im a mexican smart contract");
