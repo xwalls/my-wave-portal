@@ -23,9 +23,13 @@ contract TacoPortal {
         console.log("Im a mexican smart contract");
     }
 
-    function taco() public {
+    function taco(string memory _message) public {
         totalTacos += 1;
         console.log("%s has sent %s for dinner!", msg.sender, taco_emoji);
+        
+        tacos.push(Taco(msg.sender, _message, block.timestamp););
+
+        emit NewTaco(msg.sender, block.timestamp, _message);
     }
 
     function getTotalTacos() public view returns (uint256) {
