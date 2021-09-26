@@ -8,6 +8,8 @@ contract TacoPortal {
     uint256 totalTacos;
     string taco_emoji;
 
+    event NewTaco(address indexed from, uint256 timestamp, string message);
+
     constructor() {
         taco_emoji = unicode"🌮";
         console.log("Im a mexican smart contract");
