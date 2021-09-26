@@ -5,19 +5,21 @@ pragma solidity ^0.8.0;
 import "hardhat/console.sol";
 
 contract TacoPortal {
-    uint256 totalWaves;
+    uint256 totalTacos;
+    string taco_emoji;
 
     constructor() {
+        taco_emoji = unicode"🌮";
         console.log("Im a mexican smart contract");
     }
 
-    function wave() public {
-        totalWaves += 1;
-        console.log("%s has waved!", msg.sender);
+    function taco() public {
+        totalTacos += 1;
+        console.log("%s has sent %s for dinner!", msg.sender, taco_emoji);
     }
 
-    function getTotalWaves() public view returns (uint256) {
-        console.log("We have %d total waves!", totalWaves);
-        return totalWaves;
+    function getTotalTacos() public view returns (uint256) {
+        console.log("We have %d %s for this night!", totalTacos, taco_emoji);
+        return totalTacos;
     }
 }
