@@ -1,24 +1,24 @@
 const main = async () => {
-    const [owner, randoPerson] = await hre.ethers.getSigners();
-    const WaveContractFactory = await hre.ethers.getContractFactory('WavePortal');
-    const waveContract = await WaveContractFactory.deploy();
-    await waveContract.deployed();
+    const [owner, randomPerson] = await hre.ethers.getSigners();
+    const TacoContractFactory = await hre.ethers.getContractFactory('TacoPortal');
+    const tacoContract = await TacoContractFactory.deploy();
+    await tacoContract.deployed();
 
-    console.log("Contract deployed to:", waveContract.address);
+    console.log("Contract deployed to:", tacoContract.address);
     console.log("Contract deployed by:", owner.address);
 
-    let waveCount;
-    waveCount = await waveContract.getTotalWaves();
+    let tacoCount;
+    tacoCount = await tacoContract.getTotalTacos();
 
-    let waveTxn = await waveContract.wave();
-    await waveTxn.wait();
+    let tacoTxn = await tacoContract.taco();
+    await tacoTxn.wait();
 
-    waveCount = await waveContract.getTotalWaves();
+    tacoCount = await tacoContract.getTotalTacos();
 
-    waveTxn = await waveContract.connect(randoPerson).wave();
-    await waveTxn.wait();
+    tacoTxn = await tacoContract.connect(randomPerson).taco();
+    await tacoTxn.wait();
 
-    waveCount = await waveContract.getTotalWaves();
+    tacoCount = await tacoContract.getTotalTacos();
 }
 
 const runMain = async () => {
