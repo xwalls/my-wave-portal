@@ -1,0 +1,22 @@
+name: Tests
+on:
+  pull_request:
+    branches:
+      - develop
+      - main
+  push:
+    branches:
+      - develop
+      - main
+jobs:
+  actions:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Prepare repository
+      uses: actions/checkout@v2
+    - name: Prepare Node.js
+      uses: actions/setup-node@master
+    - name: Install dependencies
+      run: make install
+    - name: Deploy smart contract
+      run: make run
