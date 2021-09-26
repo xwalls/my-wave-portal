@@ -5,7 +5,7 @@ run:
 	npx hardhat run scripts/run.js
 
 localhost:
-	npx hardhat run scripts/deploy.js --network localhost
+	npx hardhat run scripts/run.js --network localhost
 
 rinkeby:
 	npx hardhat run scripts/deploy.js --network rinkeby
