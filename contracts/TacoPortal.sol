@@ -32,6 +32,10 @@ contract TacoPortal {
         emit NewTaco(msg.sender, block.timestamp, _message);
     }
 
+     function getAllTacos() public view returns (Taco[] memory) {
+        return tacos;
+    }
+
     function getTotalTacos() public view returns (uint256) {
         console.log("We have %d %s for this night!", totalTacos, taco_emoji);
         return totalTacos;
