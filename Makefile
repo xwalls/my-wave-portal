@@ -9,3 +9,7 @@ localhost:
 
 rinkeby:
 	npx hardhat run scripts/deploy.js --network rinkeby
+
+node:
+	npx hardhat node
+	
