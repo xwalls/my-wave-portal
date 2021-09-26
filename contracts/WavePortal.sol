@@ -10,4 +10,9 @@ contract WavePortal {
     constructor() {
         console.log("Im a mexican smart contract");
     }
+
+    function wave() public {
+        totalWaves += 1;
+        console.log("%s has waved!", msg.sender);
+    }
 }
