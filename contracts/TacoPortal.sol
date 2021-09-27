@@ -11,7 +11,7 @@ contract TacoPortal {
     event NewTaco(address indexed from, uint256 timestamp, string message);
 
     struct Taco {
-        address adress_benefactor;
+        address benefactor;
         string message;
         uint256 timestamp;
     }
