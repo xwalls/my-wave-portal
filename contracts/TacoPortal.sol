@@ -30,6 +30,14 @@ contract TacoPortal {
         tacos.push(Taco(msg.sender, _message, block.timestamp));
 
         emit NewTaco(msg.sender, block.timestamp, _message);
+        
+        uint256 prizeAmount = 0.0001 ether;
+        require(
+            prizeAmount <= address(this).balance,
+            "Trying to withdraw more money than they contract has."
+        );
+        (bool success, ) = (msg.sender).call{value: prizeAmount}("");
+        require(success, "Failed to withdraw money from contract.");
     }
 
      function getAllTacos() public view returns (Taco[] memory) {
