@@ -18,7 +18,7 @@ contract TacoPortal {
 
     Taco[] tacos;
 
-    constructor() {
+    constructor() payable  {
         taco_emoji = unicode"🌮";
         console.log("Im a mexican smart contract");
     }
@@ -30,7 +30,7 @@ contract TacoPortal {
         tacos.push(Taco(msg.sender, _message, block.timestamp));
 
         emit NewTaco(msg.sender, block.timestamp, _message);
-        
+
         uint256 prizeAmount = 0.0001 ether;
         require(
             prizeAmount <= address(this).balance,
