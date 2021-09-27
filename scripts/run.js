@@ -1,26 +1,32 @@
 const main = async () => {
-    const [owner, randomPerson] = await hre.ethers.getSigners();
-    const TacoContractFactory = await hre.ethers.getContractFactory('TacoPortal');
-    const tacoContract = await TacoContractFactory.deploy();
+    const tacoContractFactory = await hre.ethers.getContractFactory('TacoPortal');
+    const tacoContract = await tacoContractFactory.deploy({
+      value: hre.ethers.utils.parseEther('0.1'),
+    });
     await tacoContract.deployed();
+    console.log('Contract addy:', tacoContract.address);
 
-    console.log("Contract deployed to:", tacoContract.address);
-    console.log("Contract deployed by:", owner.address);
-
-    let tacoCount;
-    tacoCount = await tacoContract.getTotalTacos();
-
-    let tacoTxn = await tacoContract.taco();
+    let contractBalance = await hre.ethers.provider.getBalance(
+      tacoContract.address
+    );
+    console.log(
+      'Contract balance:',
+      hre.ethers.utils.formatEther(contractBalance)
+    );
+  
+    let tacoTxn = await tacoContract.taco('A message!');
     await tacoTxn.wait();
-
-    tacoCount = await tacoContract.getTotalTacos();
-
-    tacoTxn = await tacoContract.connect(randomPerson).taco();
-    await tacoTxn.wait();
-
-    tacoCount = await tacoContract.getTotalTacos();
-}
-
+  
+    contractBalance = await hre.ethers.provider.getBalance(tacoContract.address);
+    console.log(
+      'Contract balance:',
+      hre.ethers.utils.formatEther(contractBalance)
+    );
+  
+    let alltacos = await tacoContract.getAllTacos();
+    console.log(alltacos);
+};
+  
 const runMain = async () => {
     try {
         await main();
